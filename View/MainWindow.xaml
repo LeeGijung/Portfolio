@@ -3,10 +3,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="IntroduceMySelf" Height="450" Width="800" Background="LightGray">
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         
+        <!-- 목록 -->
+        <Grid Grid.Column="0" Margin="5,0,0,0" Background="White">
+            <TreeView ItemsSource="{Binding Tables}" SelectedItemChanged="ChangeCategory">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Category}">
+                        <Label Content="{Binding Name}"/>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </Grid>
+        
+        
+        <!-- 목록과 화면 사이 경계 -->
+        <Grid Grid.Column="1" Background="LightGray"/>
+
+        <!-- 화면 -->
+        <Grid Grid.Column="2" Background="White">
+            <DockPanel Name="mainView" Margin="5,0,0,0"/>
+        </Grid>
     </Grid>
 </Window>

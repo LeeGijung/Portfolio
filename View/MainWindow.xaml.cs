@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace View
 {
@@ -23,6 +11,22 @@ namespace View
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = new CategoryTable();
+        }
+
+        private void ChangeCategory(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            TreeView treeView = sender as TreeView;
+            if (treeView == null)
+                return;
+
+            Category category = treeView.SelectedItem as Category;
+            if (category == null)
+                return;
+
+            mainView.Children.Clear();
+            mainView.Children.Add(category.Control);
         }
     }
 }
