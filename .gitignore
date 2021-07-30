@@ -1,0 +1,9 @@
+View/obj/
+View/bin/
+.vs/
+packages/
+bin/
+ViewModel/obj/
+ViewModel/bin/
+Model/obj/
+Model/bin/
